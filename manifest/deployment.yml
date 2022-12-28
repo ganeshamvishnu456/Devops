@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: devopsassignment
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: devopsassignment
+  replicas: 2 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: devopsassignment
+    spec:
+      containers:
+      - name: devopsassignment
+        image: ganeshamvishnu/devopsassignment:latest
+        ports:
+        - containerPort: 80
+
